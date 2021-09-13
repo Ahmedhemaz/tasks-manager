@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_13_081614) do
+ActiveRecord::Schema.define(version: 2021_09_13_102419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "task_types", force: :cascade do |t|
     t.string "name"
-    t.string "imageName"
-    t.string "imagePath"
+    t.string "image_path"
+    t.string "image_original_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -2,10 +2,10 @@
 
 one:
   name: MyString
-  imageName: MyString
-  imagePath: MyString
+  image_path: MyString
+  image_original_name: MyString
 
 two:
   name: MyString
-  imageName: MyString
-  imagePath: MyString
+  image_path: MyString
+  image_original_name: MyString
