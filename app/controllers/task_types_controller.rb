@@ -3,9 +3,10 @@ class TaskTypesController < ApplicationController
 
   # GET /task_types
   def index
-    @task_types = TaskType.all
-
-    render json: @task_types
+    @task_types = TaskType.all.with_attached_avatar
+    render json: @task_types.map { |task_type|
+      task_type.as_json.merge({ image: url_for(task_type.avatar) })
+    }
   end
 
   # GET /task_types/1
@@ -47,6 +48,6 @@ class TaskTypesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def task_type_params
-    params.require(:task_type).permit(:name, :image_path, :image_original_name)
+    params.require(:task_type).permit(:name, :image_path, :image_original_name, :avatar)
   end
 end
