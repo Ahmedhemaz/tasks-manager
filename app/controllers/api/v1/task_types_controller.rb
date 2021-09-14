@@ -48,7 +48,7 @@ module API::V1
 
     # Only allow a list of trusted parameters through.
     def task_type_params
-      params.require(:task_type).permit(:name, :image_path, :image_original_name, :avatar)
+      params.require(:task_type).permit(:name, :avatar)
     end
   end
 end

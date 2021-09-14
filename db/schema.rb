@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_13_104708) do
+ActiveRecord::Schema.define(version: 2021_09_14_182154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,8 +45,6 @@ ActiveRecord::Schema.define(version: 2021_09_13_104708) do
 
   create_table "task_types", force: :cascade do |t|
     t.string "name"
-    t.string "image_path"
-    t.string "image_original_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
