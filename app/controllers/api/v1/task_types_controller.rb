@@ -5,11 +5,7 @@ module API::V1
     # GET /task_types
     def index
       @task_types = TaskType.all.with_attached_avatar
-      # TODO: create seralizer imagable
-      # render json: @task_types.map { |task_type|
-      #   task_type.as_json.merge({ image: url_for(task_type.avatar) })
-      # }
-      render json: TaskTypeSerializer.new(@task_types).serializable_hash
+      render json: TaskTypeSerializer.new(@task_types)
     end
 
     # GET /task_types/1
@@ -23,7 +19,7 @@ module API::V1
       @task_type = TaskType.new(task_type_params)
 
       if @task_type.save
-        render json: @task_type, status: :created, location: @task_type
+        render json: TaskTypeSerializer.new(@task_type), status: :created
       else
         render json: @task_type.errors, status: :unprocessable_entity
       end
