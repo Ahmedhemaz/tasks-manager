@@ -6,9 +6,10 @@ module API::V1
     def index
       @task_types = TaskType.all.with_attached_avatar
       # TODO: create seralizer imagable
-      render json: @task_types.map { |task_type|
-        task_type.as_json.merge({ image: url_for(task_type.avatar) })
-      }
+      # render json: @task_types.map { |task_type|
+      #   task_type.as_json.merge({ image: url_for(task_type.avatar) })
+      # }
+      render json: TaskTypeSerializer.new(@task_types).serializable_hash
     end
 
     # GET /task_types/1
