@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: task_types
+#
+#  id         :bigint           not null, primary key
+#  name       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 class TaskType < ApplicationRecord
   has_one_attached :avatar
   validates :name, presence: true
