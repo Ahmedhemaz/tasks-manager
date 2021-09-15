@@ -1,0 +1,28 @@
+# == Schema Information
+#
+# Table name: events
+#
+#  id         :bigint           not null, primary key
+#  duration   :time
+#  recurring  :text
+#  start_time :datetime
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  task_id    :bigint           not null
+#
+# Indexes
+#
+#  index_events_on_task_id  (task_id)
+#
+
+one:
+  start_time: 
+  end_time: 2021-09-15
+  recurring: MyText
+  references: 
+
+two:
+  start_time: 
+  end_time: 2021-09-15
+  recurring: MyText
+  references: 

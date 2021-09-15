@@ -12,7 +12,9 @@ gem 'puma', '~> 5.0'
 # gem 'jbuilder', '~> 2.7'
 gem 'active_storage_validations'
 gem 'annotate', '~> 3.1.1'
+gem 'ice_cube', '~> 0.16.3'
 gem 'jsonapi-serializer'
+gem 'recurring_select', '~> 2.0'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
