@@ -17,7 +17,6 @@ module API::V1
     # POST /tasks
     def create
       @task = Task.new(task_params)
-      byebug
       if @task.save
         render json: @task, status: :created, location: @task
       else
