@@ -16,4 +16,6 @@
 class Task < ApplicationRecord
   belongs_to :task_type
   has_one :event
+
+  scope :with_task_type, -> { Task.includes(:task_type) }
 end
