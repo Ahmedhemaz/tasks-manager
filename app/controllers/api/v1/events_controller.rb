@@ -2,6 +2,23 @@ module API::V1
   class EventsController < ApplicationController
     before_action :set_event, only: %i[show update destroy]
 
+    # GET /events
+    def index
+      @events = Event.all
+      render json: @events
+    end
+
+    # POST /events
+    def create
+      @event = Event.new(event_params)
+      byebug
+      if @event.save
+        render json: @event, status: :created
+      else
+        render json: @event.errors, status: :unprocessable_entity
+      end
+    end
+
     private
 
     def set_event
@@ -9,7 +26,7 @@ module API::V1
     end
 
     def event_params
-      params.require(:event).permit(:name, :start_time, :duration, :recurring)
+      params.require(:event).permit(:name, :start_time, :duration, :recurring, :task_id)
     end
   end
 end

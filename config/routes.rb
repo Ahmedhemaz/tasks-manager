@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :task_types
       resources :tasks
+      resources :events
     end
   end
 

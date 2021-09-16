@@ -15,5 +15,10 @@
 #  index_events_on_task_id  (task_id)
 #
 class Event < ApplicationRecord
+  serialize :recurring, Hash
+
   belongs_to :task
+  def recurring=(value)
+    super(IceCube::Rule.from_ical(value).to_hash)
+  end
 end
