@@ -5,9 +5,8 @@ module API::V1
     # GET /events
     def index
       @events = Event.with_task_full_data
-
       @events = @events.flat_map { |e| e.calendar_events(params.fetch(:start_date, Time.zone.now).to_date) }
-      render json: @events
+      @events
     end
 
     # POST /events
