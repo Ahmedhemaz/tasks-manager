@@ -29,6 +29,13 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  config.cache_store = :redis_cache_store, {
+    url: ENV['REDIS_URL'],
+    pool_size: 5,
+    pool_timeout: 5,
+    namespace: 'cache'
+  }
+
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
   Rails.application.routes.default_url_options[:host] = 'localhost:3000'

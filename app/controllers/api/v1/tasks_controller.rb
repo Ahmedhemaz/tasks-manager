@@ -4,7 +4,7 @@ module API::V1
 
     # GET /tasks
     def index
-      @tasks = Task.all
+      @tasks = Task.all_tasks
       render json: @tasks
     end
 

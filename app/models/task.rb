@@ -16,6 +16,13 @@
 class Task < ApplicationRecord
   belongs_to :task_type
   has_one :event
-
+  after_commit :flush_events_cache
   scope :with_task_type, -> { Task.includes(:task_type) }
+
+  private
+
+  def flush_events_cache
+    puts 'flushing the Events cache...'
+    Rails.cache.delete_matched 'v1/events'
+  end
 end

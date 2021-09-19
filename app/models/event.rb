@@ -17,7 +17,7 @@
 class Event < ApplicationRecord
   serialize :recurring, Hash
 
-  belongs_to :task
+  belongs_to :task, touch: true
   def recurring=(value)
     super(IceCube::Rule.from_ical(value).to_hash)
   end
@@ -30,6 +30,13 @@ class Event < ApplicationRecord
     schedule = IceCube::Schedule.new(start)
     schedule.add_recurrence_rule(rule)
     schedule
+  end
+
+  def self.events_with_all_tasks_data(start_date)
+    Rails.cache.fetch('v1/events', expires_in: 12.hours) do
+      Event.with_task_full_data
+           .flat_map { |e| e.calendar_events(start_date) }
+    end
   end
 
   def calendar_events(start)
