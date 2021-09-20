@@ -21,6 +21,7 @@ class Task < ApplicationRecord
 
   private
 
+  # create shared flush
   def flush_events_cache
     puts 'flushing the Events cache...'
     Rails.cache.delete_matched 'v1/events'
